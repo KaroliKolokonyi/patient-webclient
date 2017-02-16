@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <td>First Name</td>
+    <td>Last Name</td>
+    <td>Email Address</td>
+    <td>Birthdate</td>
+  </tr>
+  <% @patients.each do |patient_hash|%>
+    <tr>
+        <td><%= patient_hash["first_name"]%></td> 
+        <td><%= patient_hash["last_name"]%></td> 
+        <td><%= patient_hash["email"]%></td> 
+        <td><%= patient_hash["birthdate"]%></td> 
+    </tr>
+  <% end %>
+</table>

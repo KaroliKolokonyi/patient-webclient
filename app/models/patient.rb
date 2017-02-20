@@ -19,7 +19,7 @@ class Patient
   end
 
   def self.all 
-     patient_hashes = Unirest.get("http://localhost:3000/api/v2/patients.json", header => {"Accept" =>"application/json", "X-User-Email" => "test@test.com", "Authorization" => "Token token =actual-api-key"}).body
+     patient_hashes = Unirest.get("http://localhost:3000/api/v2/patients.json").body
 
     patients = []
     patient_hashes.each do |patient_hash|
@@ -27,5 +27,19 @@ class Patient
   end 
    return patients 
 
-  
+
+   def self.delete(id)
+      Unirest.delete("http://localhost:3000/api/v2/patients.json").body
+    end
+
+def self.create(first_name, last_name, email, birthdate)
+
+      Unirest.post("http://localhost:3000/api/v2/patients.json", :headers => {"Accept"=> "application/json"}, :parameters => {:first_name => first_name, :last_name => last_name, :email,=> email, :birthdate}).body
+    end
+
+  def self.update(id, first_name, last_name, birthdate, email)
+      Unirest.patch("http://localhost:3000/api/v2/patients/#{id}.json", :headers => {"Accept"=> "application/json"}, :parameters => {:first_name=> first_name, :last_name => last_name, :birthdate=> birthdate, :email => email}).body
+    end
+
+
 end

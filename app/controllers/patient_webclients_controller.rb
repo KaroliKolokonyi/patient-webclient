@@ -7,7 +7,7 @@ def show
 end 
 
 def index
- Patient.all 
+ @patient = Patient.all 
 
   end 
 
@@ -30,14 +30,15 @@ def edit
 
 
   def update
-    @patient= Unirest.patch("http://localhost:3000/api/v2/patients/#{params[:id]}.json", :headers => {"Accept"=> "application/json"}, :parameters => {:first_name => params[:first_name], :last_name => params[:last_name], :email=> params[:email], :birthdate => params[:birthdate], :ssn => params[:ssn]}).body
+      Patient.update(params[:id], params[:first_name], params[:last_name], params[:email], params[:birthdate])
 
-    redirect_to "/patients/#{@patient['id']}"
+    redirect_to "/patients/#{params[:id]}"
   end
 
+
   def destroy
-    Unirest.delete("http://localhost:3000/api/v2/patients/#{params[:id]}.json").body
-    
+    Unirest.delete(params[:id])
+  
     redirect_to "/patients"
   end
 

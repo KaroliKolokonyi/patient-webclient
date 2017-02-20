@@ -1,0 +1,15 @@
+<h1>Update Patient Information</h1>
+
+<%= form_tag "/patients/#{@patient['id']}", method: :patch do %>
+
+  <%= label_tag :first_name %>
+  <%= text_field_tag :first_name, @patient['first_name'] %>
+
+  <%= label_tag :last_name %>
+  <%= text_field_tag :last_name, @patient['last_name'] %>
+
+  <%= label_tag :email %>
+  <%= text_field_tag :email, @patient['email'] %>
+
+  <%= submit_tag "Update Patient Information" %>
+<% end %>

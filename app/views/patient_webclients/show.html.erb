@@ -1,3 +1,12 @@
+<h1> Patient Information</h1>
 
-Full Name: <%= @patient["first_name"] %> <%= @patient["last_name"]%>
-<%= @patient["email"]%>
+  <h1>First Name: <%= @patient.first_name %></h1>
+  <h1>Last Name: <%= @patient.last_name %></h1>
+  <h1>Birthdate: <%= @patient.birthdate %></h1>
+  <h1>Email: <%= @patient.email %></h1>
+
+
+
+
+
+<%= link_to " Discharge the patient", "/employees/#{@patient.id}", method: :delete %>
